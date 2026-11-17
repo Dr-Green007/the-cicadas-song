@@ -5,6 +5,7 @@ namespace thecicadassong
         public Form1()
         {
             InitializeComponent();
+            // а тут ничего нету
         }
     }
 }
