@@ -6,5 +6,10 @@ namespace thecicadassong
         {
             InitializeComponent();
         }
+
+        private void quit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
