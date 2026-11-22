@@ -33,7 +33,6 @@
             leadership = new Label();
             developers = new Label();
             quit = new Label();
-            label1 = new Label();
             SuspendLayout();
             // 
             // newgame
@@ -46,6 +45,7 @@
             newgame.Size = new Size(148, 43);
             newgame.TabIndex = 0;
             newgame.Text = "Новая игра";
+            newgame.Click += newgame_Click;
             // 
             // loadgame
             // 
@@ -92,23 +92,12 @@
             quit.Text = "Выйти";
             quit.Click += quit_Click;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.ForeColor = SystemColors.ButtonFace;
-            label1.Location = new Point(174, 410);
-            label1.Name = "label1";
-            label1.Size = new Size(38, 15);
-            label1.TabIndex = 5;
-            label1.Text = "label1";
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(1008, 729);
-            Controls.Add(label1);
             Controls.Add(quit);
             Controls.Add(developers);
             Controls.Add(leadership);
@@ -127,6 +116,5 @@
         private Label leadership;
         private Label developers;
         private Label quit;
-        private Label label1;
     }
 }
