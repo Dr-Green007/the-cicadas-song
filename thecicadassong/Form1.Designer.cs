@@ -58,6 +58,7 @@
             loadgame.Size = new Size(153, 34);
             loadgame.TabIndex = 1;
             loadgame.Text = "Загрузить игру";
+            loadgame.Click += loadgame_Click;
             // 
             // leadership
             // 
