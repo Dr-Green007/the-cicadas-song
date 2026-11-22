@@ -11,11 +11,14 @@ namespace thecicadassong
 {
     public partial class FormPrologue01 : Form
     {
-        private GameState _state = new();
+        private GameState _state;
 
-        public FormPrologue01()
+        public FormPrologue01() : this(new GameState()) { }
+
+        public FormPrologue01(GameState state)
         {
             InitializeComponent();
+            _state = state ?? new GameState();
         }
 
         //СОХРАНИТЬ
@@ -32,6 +35,13 @@ namespace thecicadassong
             if (name.Length > 32)
             {
                 MessageBox.Show("Имя: 1–32 символа.", "Песнь цикад",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (name.IndexOfAny(System.IO.Path.GetInvalidFileNameChars()) >= 0)
+            {
+                MessageBox.Show("Имя содержит недопустимые символы.", "Песнь цикад",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -73,23 +83,16 @@ namespace thecicadassong
 
             var input = Interaction.InputBox(
                 $"Выберите сохранение (номер или имя):\n\n{list}",
-                "Загрузить игру",
-                "1");
+                "Загрузить игру", "1");
 
             if (string.IsNullOrWhiteSpace(input)) return;
-
             input = input.Trim();
 
-            // определить, что ввели: номер или имя
             string chosen;
             if (int.TryParse(input, out var num) && num >= 1 && num <= saves.Count)
-            {
                 chosen = saves[num - 1];
-            }
             else if (saves.Contains(input))
-            {
                 chosen = input;
-            }
             else
             {
                 MessageBox.Show("Такого сохранения нет.", "Песнь цикад",
@@ -107,13 +110,8 @@ namespace thecicadassong
 
             _state = data;
 
-            MessageBox.Show(
-                $"Загружено «{chosen}».\n" +
-                $"Сцена: {_state.CurrentSceneId}\n" +
-                $"Воля: {_state.Will}  Вера: {_state.Faith}  Теории: {_state.Theories}\n" +
-                $"Сохранено: {_state.SavedAt}",
-                "Песнь цикад", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+            // переход
+            Transition.Open(_state.CurrentSceneId, _state, this);
         }
     }
 }
