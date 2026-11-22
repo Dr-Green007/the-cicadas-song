@@ -25,5 +25,6 @@ public class GameState
         ["Ange"] = 0
     };
 
-
+    public List<int> OpenQuestions { get; set; } = new();
+    public string SavedAt { get; set; } = "";
 }
