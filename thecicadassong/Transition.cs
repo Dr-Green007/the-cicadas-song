@@ -13,8 +13,11 @@ namespace thecicadassong
             Form next;
             switch (sceneId)
             {
+                case "splash":
+                    next = new FormPrologue(state);   //заставка
+                    break;
                 case "prologue":
-                    next = new FormPrologue01(state);
+                    next = new FormPrologue01(state); //сцена с кнопками
                     break;
                 default:
                     MessageBox.Show($"Сцена «{sceneId}» не реализована.", "Песнь цикад",

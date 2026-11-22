@@ -25,7 +25,7 @@ namespace thecicadassong
         private void newgame_Click(object? sender, EventArgs e)
         {
             var state = new GameState();
-            Transition.Open(state.CurrentSceneId, state, this);
+            Transition.Open("splash", state, this);   //заставка
         }
 
         //ЗАГРУЗИТЬ ИГРУ
