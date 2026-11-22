@@ -70,6 +70,7 @@
             leadership.Size = new Size(146, 29);
             leadership.TabIndex = 2;
             leadership.Text = "Таблица лидеров";
+            leadership.Click += leadership_Click;
             // 
             // developers
             // 
