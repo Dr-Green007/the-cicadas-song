@@ -70,6 +70,7 @@
             leadership.Size = new Size(146, 29);
             leadership.TabIndex = 2;
             leadership.Text = "Таблица лидеров";
+            leadership.Click += leadership_Click;
             // 
             // developers
             // 
@@ -104,6 +105,7 @@
             db_test.Size = new Size(321, 37);
             db_test.TabIndex = 5;
             db_test.Text = "кнопка для проверки бд";
+            db_test.Click += db_test_Click;
             // 
             // Form1
             // 
