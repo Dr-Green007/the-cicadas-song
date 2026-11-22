@@ -53,7 +53,7 @@ namespace thecicadassong
 
         private async Task HoldThenFadeOut()
         {
-            await Task.Delay(7000);   // текст держится 7 секунд
+            await Task.Delay(4000);   // текст держится 4 секунд
             timer1.Start();           // запускаем затухание
         }
     }

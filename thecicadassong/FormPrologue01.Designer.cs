@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             testtext = new Label();
+            label1 = new Label();
             SuspendLayout();
             // 
             // testtext
@@ -42,12 +43,24 @@
             testtext.TabIndex = 0;
             testtext.Text = "*ТЕСТОВЫЙ ТЕКСТ! ЗДЕСЬ НИЧЕГО ПОКА ЧТО НЕТУ*";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("SimSun-ExtG", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = SystemColors.ButtonFace;
+            label1.Location = new Point(12, 26);
+            label1.Name = "label1";
+            label1.Size = new Size(235, 35);
+            label1.TabIndex = 1;
+            label1.Text = "Сохранить игру";
+            // 
             // FormPrologue01
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(1008, 729);
+            Controls.Add(label1);
             Controls.Add(testtext);
             Name = "FormPrologue01";
             Text = "FormPrologue01";
@@ -58,5 +71,6 @@
         #endregion
 
         private Label testtext;
+        private Label label1;
     }
 }

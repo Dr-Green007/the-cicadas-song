@@ -33,6 +33,7 @@
             leadership = new Label();
             developers = new Label();
             quit = new Label();
+            db_test = new Label();
             SuspendLayout();
             // 
             // newgame
@@ -92,12 +93,24 @@
             quit.Text = "Выйти";
             quit.Click += quit_Click;
             // 
+            // db_test
+            // 
+            db_test.AutoSize = true;
+            db_test.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            db_test.ForeColor = SystemColors.ButtonFace;
+            db_test.Location = new Point(79, 368);
+            db_test.Name = "db_test";
+            db_test.Size = new Size(321, 37);
+            db_test.TabIndex = 5;
+            db_test.Text = "кнопка для проверки бд";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(1008, 729);
+            Controls.Add(db_test);
             Controls.Add(quit);
             Controls.Add(developers);
             Controls.Add(leadership);
@@ -116,5 +129,6 @@
         private Label leadership;
         private Label developers;
         private Label quit;
+        private Label db_test;
     }
 }

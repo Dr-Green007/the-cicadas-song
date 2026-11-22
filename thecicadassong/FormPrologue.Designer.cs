@@ -40,11 +40,11 @@
             prologue_text.BackColor = SystemColors.ActiveCaptionText;
             prologue_text.Font = new Font("SimSun-ExtB", 48F, FontStyle.Regular, GraphicsUnit.Point, 0);
             prologue_text.ForeColor = SystemColors.ButtonFace;
-            prologue_text.Location = new Point(200, 256);
+            prologue_text.Location = new Point(421, 252);
             prologue_text.Name = "prologue_text";
-            prologue_text.Size = new Size(652, 64);
+            prologue_text.Size = new Size(188, 64);
             prologue_text.TabIndex = 0;
-            prologue_text.Text = "Пролог: последний катер";
+            prologue_text.Text = "Пролог";
             // 
             // timer1
             // 
