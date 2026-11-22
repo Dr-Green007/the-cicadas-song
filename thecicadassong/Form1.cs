@@ -84,5 +84,12 @@ namespace thecicadassong
                 "Песнь цикад", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
+
+        private void db_test_Click(object sender, EventArgs e)
+        {
+            testdb switches = new testdb();
+            this.Hide();
+            switches.Show();
+        }
     }
 }
