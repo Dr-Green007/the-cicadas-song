@@ -1,5 +1,6 @@
 using Microsoft.Data.SqlClient;
 using Microsoft.VisualBasic;
+using System.Media;
 using System.Text;
 using static System.Windows.Forms.AxHost;
 
@@ -13,6 +14,9 @@ namespace thecicadassong
         private const string ConnString =
             @"Server=(localdb)\MSSQLLocalDB;Database=sessions_db;Trusted_Connection=True;TrustServerCertificate=True;";
         private GameState _state = new();
+
+        private SoundPlayer? _music;   //музыка меню
+
         public Form1()
         {
             InitializeComponent();
@@ -22,6 +26,35 @@ namespace thecicadassong
             // а тут ничего нету (дополнение от лёхи: а тут что-то нахуй надо?)
             // вот это надо
         }
+
+        //Музыка включается, когда форма видна, и выключается, когда скрыта
+        protected override void OnVisibleChanged(EventArgs e)
+        {
+            base.OnVisibleChanged(e);
+            if (Visible) StartMusic();
+            else _music?.Stop();
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            _music?.Stop();
+            base.OnFormClosing(e);
+        }
+
+        private void StartMusic()
+        {
+            try
+            {
+                _music ??= new SoundPlayer(Properties.Resources.menu);
+                _music.PlayLooping();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Не удалось запустить музыку:\n" + ex.Message,
+                    "Песнь цикад", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
         private void newgame_Click(object? sender, EventArgs e)
         {
             var state = new GameState();
@@ -79,6 +112,7 @@ namespace thecicadassong
         //ВЫЙТИ
         private void quit_Click(object sender, EventArgs e)
         {
+            _music?.Stop();
             Application.Exit();
         }
 
