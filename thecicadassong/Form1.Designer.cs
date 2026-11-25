@@ -2,15 +2,8 @@
 {
     partial class Form1
     {
-        /// <summary>
-        ///  Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        ///  Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,87 +15,90 @@
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
-            newgame = new Label();
-            loadgame = new Label();
-            leadership = new Label();
-            developers = new Label();
-            quit = new Label();
-            db_test = new Label();
+            logo = new TitleLogo();
+            newgame = new MenuButton();
+            loadgame = new MenuButton();
+            leadership = new MenuButton();
+            developers = new MenuButton();
+            settings = new MenuButton();
+            quit = new MenuButton();
+            db_test = new MenuButton();
             SuspendLayout();
+            // 
+            // logo
+            // 
+            logo.Location = new Point(700, 140);
+            logo.Name = "logo";
+            logo.Size = new Size(480, 90);
+            logo.TabIndex = 7;
             // 
             // newgame
             // 
-            newgame.AutoSize = true;
-            newgame.Font = new Font("Javanese Text", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            newgame.ForeColor = SystemColors.ButtonFace;
-            newgame.Location = new Point(861, 39);
+            newgame.Font = new Font("Georgia", 14F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            newgame.Location = new Point(760, 260);
             newgame.Name = "newgame";
-            newgame.Size = new Size(148, 43);
+            newgame.Size = new Size(340, 38);
             newgame.TabIndex = 0;
             newgame.Text = "Новая игра";
             newgame.Click += newgame_Click;
             // 
             // loadgame
             // 
-            loadgame.AutoSize = true;
-            loadgame.Font = new Font("Javanese Text", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            loadgame.ForeColor = SystemColors.ButtonFace;
-            loadgame.Location = new Point(861, 82);
+            loadgame.Font = new Font("Georgia", 14F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            loadgame.Location = new Point(760, 300);
             loadgame.Name = "loadgame";
-            loadgame.Size = new Size(153, 34);
+            loadgame.Size = new Size(340, 38);
             loadgame.TabIndex = 1;
             loadgame.Text = "Загрузить игру";
             loadgame.Click += loadgame_Click;
             // 
             // leadership
             // 
-            leadership.AutoSize = true;
-            leadership.Font = new Font("Javanese Text", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            leadership.ForeColor = SystemColors.ButtonFace;
-            leadership.Location = new Point(863, 116);
+            leadership.Font = new Font("Georgia", 14F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            leadership.Location = new Point(760, 340);
             leadership.Name = "leadership";
-            leadership.Size = new Size(146, 29);
+            leadership.Size = new Size(340, 38);
             leadership.TabIndex = 2;
             leadership.Text = "Таблица лидеров";
             leadership.Click += leadership_Click;
             // 
             // developers
             // 
-            developers.AutoSize = true;
-            developers.Font = new Font("Javanese Text", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            developers.ForeColor = SystemColors.ButtonFace;
-            developers.Location = new Point(863, 145);
+            developers.Font = new Font("Georgia", 14F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            developers.Location = new Point(760, 380);
             developers.Name = "developers";
-            developers.Size = new Size(141, 29);
+            developers.Size = new Size(340, 38);
             developers.TabIndex = 3;
             developers.Text = "О разработчиках";
             // 
+            // settings
+            // 
+            settings.Font = new Font("Georgia", 14F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            settings.Location = new Point(760, 420);
+            settings.Name = "settings";
+            settings.Size = new Size(340, 38);
+            settings.TabIndex = 6;
+            settings.Text = "Настройки";
+            settings.Click += settings_Click;
+            // 
             // quit
             // 
-            quit.AutoSize = true;
-            quit.Font = new Font("Javanese Text", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            quit.ForeColor = SystemColors.ButtonFace;
-            quit.Location = new Point(886, 174);
+            quit.Font = new Font("Georgia", 14F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            quit.Location = new Point(760, 460);
             quit.Name = "quit";
-            quit.Size = new Size(94, 43);
+            quit.Size = new Size(340, 38);
             quit.TabIndex = 4;
             quit.Text = "Выйти";
             quit.Click += quit_Click;
             // 
             // db_test
             // 
-            db_test.AutoSize = true;
-            db_test.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            db_test.ForeColor = SystemColors.ButtonFace;
-            db_test.Location = new Point(79, 368);
+            db_test.Font = new Font("Georgia", 10F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            db_test.Location = new Point(10, 10);
             db_test.Name = "db_test";
-            db_test.Size = new Size(321, 37);
+            db_test.Size = new Size(260, 30);
             db_test.TabIndex = 5;
             db_test.Text = "кнопка для проверки бд";
             db_test.Click += db_test_Click;
@@ -111,27 +107,30 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ActiveCaptionText;
-            ClientSize = new Size(1008, 729);
+            BackColor = Color.Black;
+            ClientSize = new Size(1196, 532);
             Controls.Add(db_test);
             Controls.Add(quit);
+            Controls.Add(settings);
             Controls.Add(developers);
             Controls.Add(leadership);
             Controls.Add(loadgame);
             Controls.Add(newgame);
+            Controls.Add(logo);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Песнь цикад";
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private Label newgame;
-        private Label loadgame;
-        private Label leadership;
-        private Label developers;
-        private Label quit;
-        private Label db_test;
+        private TitleLogo logo;
+        private MenuButton newgame;
+        private MenuButton loadgame;
+        private MenuButton leadership;
+        private MenuButton developers;
+        private MenuButton settings;
+        private MenuButton quit;
+        private MenuButton db_test;
     }
 }

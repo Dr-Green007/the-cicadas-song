@@ -68,5 +68,15 @@ namespace thecicadassong.Properties {
                 return ResourceManager.GetStream("menu", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap menu_bg {
+            get {
+                object obj = ResourceManager.GetObject("menu_bg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

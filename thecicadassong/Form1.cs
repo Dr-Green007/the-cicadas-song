@@ -1,6 +1,5 @@
 using Microsoft.Data.SqlClient;
 using Microsoft.VisualBasic;
-using System.Media;
 using System.Text;
 using static System.Windows.Forms.AxHost;
 
@@ -15,14 +14,12 @@ namespace thecicadassong
             @"Server=(localdb)\MSSQLLocalDB;Database=sessions_db;Trusted_Connection=True;TrustServerCertificate=True;";
         private GameState _state = new();
 
-        private SoundPlayer? _music;   //музыка меню
-
         public Form1()
         {
             InitializeComponent();
-
-            newgame.Click += newgame_Click;
-            loadgame.Click += loadgame_Click;
+            DoubleBuffered = true;
+            BackgroundImage = Properties.Resources.menu_bg;
+            BackgroundImageLayout = ImageLayout.Stretch;
             // а тут ничего нету (дополнение от лёхи: а тут что-то нахуй надо?)
             // вот это надо
         }
@@ -31,28 +28,20 @@ namespace thecicadassong
         protected override void OnVisibleChanged(EventArgs e)
         {
             base.OnVisibleChanged(e);
-            if (Visible) StartMusic();
-            else _music?.Stop();
+            if (Visible) MusicManager.Play();
+            else MusicManager.Stop();
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            _music?.Stop();
+            MusicManager.Stop();
             base.OnFormClosing(e);
         }
 
-        private void StartMusic()
+        private void settings_Click(object? sender, EventArgs e)
         {
-            try
-            {
-                _music ??= new SoundPlayer(Properties.Resources.menu);
-                _music.PlayLooping();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Не удалось запустить музыку:\n" + ex.Message,
-                    "Песнь цикад", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            using var f = new SettingsForm();
+            f.ShowDialog(this);
         }
 
         private void newgame_Click(object? sender, EventArgs e)
@@ -112,7 +101,7 @@ namespace thecicadassong
         //ВЫЙТИ
         private void quit_Click(object sender, EventArgs e)
         {
-            _music?.Stop();
+            MusicManager.Stop();
             Application.Exit();
         }
 
@@ -179,7 +168,6 @@ ORDER BY created_at DESC";
                             $"#{id}  {name}  |  {duration:hh\\:mm\\:ss}  |  {created:dd.MM.yyyy HH:mm}");
                     }
                 }
-
                 if (sb.Length == 0)
                 {
                     MessageBox.Show("Сохранений пока нет.", "Загрузка",
