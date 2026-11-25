@@ -119,7 +119,7 @@ namespace thecicadassong
                 cmd.CommandText = @"
 SELECT TOP 10 id, name, duration_seconds, created_at
 FROM dbo.sessions
-ORDER BY created_at DESC";
+ORDER BY duration_seconds ASC";
 
                 var sb = new StringBuilder();
                 using (var reader = cmd.ExecuteReader())

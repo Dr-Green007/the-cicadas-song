@@ -127,22 +127,22 @@ namespace thecicadassong
 
                 using var cmd = conn.CreateCommand();
                 cmd.CommandText = @"
-SELECT TOP 10 id, name, duration_seconds, created_at
+SELECT TOP 10 name, duration_seconds, created_at
 FROM dbo.sessions
-ORDER BY created_at DESC";
+ORDER BY duration_seconds ASC";
 
                 var sb = new StringBuilder();
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        int id = reader.GetInt32(0);
-                        string name = reader.GetString(1);
-                        var duration = TimeSpan.FromSeconds(reader.GetInt32(2));
-                        DateTime created = reader.GetDateTime(3);
+                        
+                        string name = reader.GetString(0);
+                        var duration = TimeSpan.FromSeconds(reader.GetInt32(1));
+                        DateTime created = reader.GetDateTime(2);
 
                         sb.AppendLine(
-                            $"#{id}  {name}  |  {duration:hh\\:mm\\:ss}  |  {created:dd.MM.yyyy HH:mm}");
+                            $"#{name}  |  {duration:hh\\:mm\\:ss}  |  {created:dd.MM.yyyy HH:mm}");
                     }
                 }
 
