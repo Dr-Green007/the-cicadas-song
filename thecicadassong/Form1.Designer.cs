@@ -17,6 +17,7 @@
 
         private void InitializeComponent()
         {
+            butterfly = new ButterflyButton();
             logo = new TitleLogo();
             newgame = new MenuButton();
             loadgame = new MenuButton();
@@ -27,8 +28,18 @@
             db_test = new MenuButton();
             SuspendLayout();
             // 
+            // butterfly
+            // 
+            butterfly.BackColor = Color.Transparent;
+            butterfly.Location = new Point(900, 25);
+            butterfly.Name = "butterfly";
+            butterfly.Size = new Size(110, 110);
+            butterfly.TabIndex = 8;
+            butterfly.Click += butterfly_Click;
+            // 
             // logo
             // 
+            logo.BackColor = Color.Transparent;
             logo.Location = new Point(700, 140);
             logo.Name = "logo";
             logo.Size = new Size(480, 90);
@@ -36,6 +47,7 @@
             // 
             // newgame
             // 
+            newgame.BackColor = Color.Transparent;
             newgame.Font = new Font("Georgia", 14F, FontStyle.Regular, GraphicsUnit.Point, 204);
             newgame.Location = new Point(760, 260);
             newgame.Name = "newgame";
@@ -46,6 +58,7 @@
             // 
             // loadgame
             // 
+            loadgame.BackColor = Color.Transparent;
             loadgame.Font = new Font("Georgia", 14F, FontStyle.Regular, GraphicsUnit.Point, 204);
             loadgame.Location = new Point(760, 300);
             loadgame.Name = "loadgame";
@@ -56,6 +69,7 @@
             // 
             // leadership
             // 
+            leadership.BackColor = Color.Transparent;
             leadership.Font = new Font("Georgia", 14F, FontStyle.Regular, GraphicsUnit.Point, 204);
             leadership.Location = new Point(760, 340);
             leadership.Name = "leadership";
@@ -66,6 +80,7 @@
             // 
             // developers
             // 
+            developers.BackColor = Color.Transparent;
             developers.Font = new Font("Georgia", 14F, FontStyle.Regular, GraphicsUnit.Point, 204);
             developers.Location = new Point(760, 380);
             developers.Name = "developers";
@@ -75,6 +90,7 @@
             // 
             // settings
             // 
+            settings.BackColor = Color.Transparent;
             settings.Font = new Font("Georgia", 14F, FontStyle.Regular, GraphicsUnit.Point, 204);
             settings.Location = new Point(760, 420);
             settings.Name = "settings";
@@ -85,6 +101,7 @@
             // 
             // quit
             // 
+            quit.BackColor = Color.Transparent;
             quit.Font = new Font("Georgia", 14F, FontStyle.Regular, GraphicsUnit.Point, 204);
             quit.Location = new Point(760, 460);
             quit.Name = "quit";
@@ -95,6 +112,7 @@
             // 
             // db_test
             // 
+            db_test.BackColor = Color.Transparent;
             db_test.Font = new Font("Georgia", 10F, FontStyle.Regular, GraphicsUnit.Point, 204);
             db_test.Location = new Point(10, 10);
             db_test.Name = "db_test";
@@ -116,6 +134,7 @@
             Controls.Add(leadership);
             Controls.Add(loadgame);
             Controls.Add(newgame);
+            Controls.Add(butterfly);
             Controls.Add(logo);
             Name = "Form1";
             Text = "Песнь цикад";
@@ -124,6 +143,7 @@
 
         #endregion
 
+        private ButterflyButton butterfly;
         private TitleLogo logo;
         private MenuButton newgame;
         private MenuButton loadgame;

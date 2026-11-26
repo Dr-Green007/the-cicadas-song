@@ -13,7 +13,12 @@ namespace thecicadassong
         private const string ConnString =
             @"Server=(localdb)\MSSQLLocalDB;Database=sessions_db;Trusted_Connection=True;TrustServerCertificate=True;";
         private GameState _state = new();
-
+        //Паслхалка для Алексея Фомина
+        private void butterfly_Click(object? sender, EventArgs e)
+        {
+            using var f = new EasterEggForm();
+            f.ShowDialog(this);
+        }
         public Form1()
         {
             InitializeComponent();

@@ -111,7 +111,7 @@ namespace thecicadassong
 
             var red = Color.FromArgb(225, 20, 20);
             float pad = 8;
-            const string a = "Umineko When They ", b = "C", c = "ry";
+            const string a = "Umineko The Cicadas ", b = "S", c = "ong";
             var style = FontStyle.Bold | FontStyle.Italic;
             float size1 = FitSize(g, a + b + c, "Arial", style, Width - pad * 2);
             using var f1 = new Font("Arial", size1, style);
@@ -122,17 +122,7 @@ namespace thecicadassong
             DrawRuns(g, f1, 0, Color.Black, em1 * 0.2f,
                 (a, pad, Color.White), (b, pad + wA, red), (c, pad + wA + wB, Color.White));
 
-            using var f2 = new Font("Times New Roman", 9f, FontStyle.Regular);
-            string s1 = "07th Expansion presents. Welcome to Rokkenjima.";
-            string s2 = "\u201CWHEN THEY CRY 4\u201D";
-            var sz1 = Measure(g, s1, f2);
-            var sz2 = Measure(g, s2, f2);
-            float x1 = Width * 0.10f;
-            float y1 = titleH * 0.95f;
-            DrawRuns(g, f2, y1, Color.Black, 3f, (s1, x1, Color.White));
-            DrawRuns(g, f2, y1 + sz1.Height - 1, Color.Black, 3f, (s2, x1 + sz1.Width - sz2.Width, Color.White));
-
-            string aa = "Answer Arcs";
+            string aa = "Question Arc";
             float sizeAA = FitSize(g, aa, "Arial", style, Width * 0.40f);
             using var f3 = new Font("Arial", sizeAA, style);
             float emAA = sizeAA * g.DpiY / 72f;
