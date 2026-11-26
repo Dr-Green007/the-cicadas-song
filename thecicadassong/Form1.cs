@@ -7,11 +7,8 @@ namespace thecicadassong
 {
     public partial class Form1 : Form
     {
-        private const string MasterConnString =
-            @"Server=(localdb)\MSSQLLocalDB;Database=master;Trusted_Connection=True;TrustServerCertificate=True;";
-
         private const string ConnString =
-            @"Server=(localdb)\MSSQLLocalDB;Database=sessions_db;Trusted_Connection=True;TrustServerCertificate=True;";
+            @"Server=DESKTOP-MLACIKR\SQLEXPRESS;Database=sessions_db;Trusted_Connection=True;TrustServerCertificate=True;";
         private GameState _state = new();
 
         public Form1()
@@ -114,7 +111,7 @@ namespace thecicadassong
         }
         private static void EnsureDatabase()
         {
-            using var conn = new SqlConnection(MasterConnString);
+            using var conn = new SqlConnection(ConnString);
             conn.Open();
             using var cmd = conn.CreateCommand();
             cmd.CommandText = "CREATE DATABASE sessions_db";
