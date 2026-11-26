@@ -107,7 +107,6 @@ namespace thecicadassong
 
             FormBorderStyle = FormBorderStyle.None;
             StartPosition = FormStartPosition.CenterParent;
-            BackColor = Color.FromArgb(255, 214, 120);   //золотая рамка
             Padding = new Padding(3);
             ClientSize = new Size(gif.Width + 6, gif.Height + 6);
             KeyPreview = true;
