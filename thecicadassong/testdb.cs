@@ -18,7 +18,9 @@ namespace thecicadassong
 
         // бедный мой домашний пк будет хостится(((
         private const string ConnString =
-            @"Server=DESKTOP-MLACIKR\SQLEXPRESS;Database=sessions_db;Trusted_Connection=True;TrustServerCertificate=True;";
+    "Server=153.52.95.81,1433;Database=sessions_db;" +
+    "User ID=game_user;Password=1234;" +
+    "Encrypt=True;TrustServerCertificate=True;Connection Timeout=15;";
 
         public testdb()
         {

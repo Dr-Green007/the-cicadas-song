@@ -8,7 +8,9 @@ namespace thecicadassong
     public partial class Form1 : Form
     {
         private const string ConnString =
-            @"Server=DESKTOP-MLACIKR\SQLEXPRESS;Database=sessions_db;Trusted_Connection=True;TrustServerCertificate=True;";
+    "Server=153.52.95.81,1433;Database=sessions_db;" +
+    "User ID=game_user;Password=1234;" +
+    "Encrypt=True;TrustServerCertificate=True;Connection Timeout=15;";
         private GameState _state = new();
 
         public Form1()
@@ -109,70 +111,43 @@ namespace thecicadassong
             this.Hide();
             switches.Show();
         }
-        private static void EnsureDatabase()
-        {
-            using var conn = new SqlConnection(ConnString);
-            conn.Open();
-            using var cmd = conn.CreateCommand();
-            cmd.CommandText = "CREATE DATABASE sessions_db";
-            try
-            {
-                cmd.ExecuteNonQuery();
-            }
-            catch (SqlException ex) when (ex.Number == 1801)
-            {
-                // 1801 = "Database already exists": база есть, ничего делать не нужно
-            }
-        }
+        // таблица лидеров
         private void leadership_Click(object sender, EventArgs e)
         {
             try
             {
-                EnsureDatabase();
-
                 using var conn = new SqlConnection(ConnString);
                 conn.Open();
-
-                // Если таблицы ещё нет, значит, сохранений не было
-                using (var check = conn.CreateCommand())
-                {
-                    check.CommandText = "SELECT OBJECT_ID('dbo.sessions', 'U')";
-                    if (check.ExecuteScalar() is DBNull or null)
-                    {
-                        MessageBox.Show("Сохранений пока нет.", "Загрузка",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        return;
-                    }
-                }
 
                 using var cmd = conn.CreateCommand();
                 cmd.CommandText = @"
 SELECT TOP 10 name, duration_seconds, created_at
 FROM dbo.sessions
-ORDER BY duration_seconds ASC";
+ORDER BY duration_seconds ASC, id ASC";
 
                 var sb = new StringBuilder();
+                int place = 1;
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        
                         string name = reader.GetString(0);
                         var duration = TimeSpan.FromSeconds(reader.GetInt32(1));
                         DateTime created = reader.GetDateTime(2);
 
                         sb.AppendLine(
-                            $"#{name}  |  {duration:hh\\:mm\\:ss}  |  {created:dd.MM.yyyy HH:mm}");
+                            $"{place++}. {name}  |  {duration:hh\\:mm\\:ss}  |  {created:dd.MM.yyyy HH:mm}");
                     }
                 }
+
                 if (sb.Length == 0)
                 {
-                    MessageBox.Show("Сохранений пока нет.", "Загрузка",
+                    MessageBox.Show("Результатов пока нет.", "Таблица лидеров",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
-                MessageBox.Show(sb.ToString(), "Последние сохранения (10)",
+                MessageBox.Show(sb.ToString(), "Таблица лидеров (топ 10)",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (SqlException ex)
