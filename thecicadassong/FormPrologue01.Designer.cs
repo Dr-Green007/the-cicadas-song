@@ -23,21 +23,14 @@
 
         private void InitializeComponent()
         {
-            testtext = new Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrologue01));
             btnSave = new Button();
             btnLoad = new Button();
+            pictureBox1 = new PictureBox();
+            text01 = new RichTextBox();
+            cont = new Button();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
-            // 
-            // testtext
-            // 
-            testtext.AutoSize = true;
-            testtext.Font = new Font("SimSun-ExtB", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            testtext.ForeColor = SystemColors.ButtonFace;
-            testtext.Location = new Point(160, 266);
-            testtext.Name = "testtext";
-            testtext.Size = new Size(731, 29);
-            testtext.TabIndex = 0;
-            testtext.Text = "*ТЕСТОВЫЙ ТЕКСТ! ЗДЕСЬ НИЧЕГО ПОКА ЧТО НЕТУ*";
             // 
             // btnSave
             // 
@@ -67,25 +60,63 @@
             btnLoad.UseVisualStyleBackColor = false;
             btnLoad.Click += btnLoad_Click;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.Location = new Point(1, 2);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(1004, 625);
+            pictureBox1.TabIndex = 3;
+            pictureBox1.TabStop = false;
+            // 
+            // text01
+            // 
+            text01.BackColor = SystemColors.GradientActiveCaption;
+            text01.BorderStyle = BorderStyle.None;
+            text01.Font = new Font("Georgia", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            text01.ForeColor = SystemColors.ControlText;
+            text01.Location = new Point(163, 345);
+            text01.Name = "text01";
+            text01.Size = new Size(619, 206);
+            text01.TabIndex = 4;
+            text01.Text = "Октябрь 1986 года. \nОстров Роккэндзима. \nВдали от материка, на скале над морем, стоит поместье рода Усиромия. \nВ этом году тайфун придёт раньше, чем семья успеет разъехаться.";
+            // 
+            // cont
+            // 
+            cont.BackColor = Color.FromArgb(30, 30, 50);
+            cont.FlatStyle = FlatStyle.Flat;
+            cont.Font = new Font("SimSun-ExtG", 14.25F);
+            cont.ForeColor = SystemColors.ButtonFace;
+            cont.Location = new Point(812, 505);
+            cont.Name = "cont";
+            cont.Size = new Size(177, 55);
+            cont.TabIndex = 5;
+            cont.Text = "Продолжить";
+            cont.UseVisualStyleBackColor = false;
+            cont.Click += cont_Click_1;
+            // 
             // FormPrologue01
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
-            ClientSize = new Size(1008, 729);
+            ClientSize = new Size(1001, 563);
+            Controls.Add(cont);
+            Controls.Add(text01);
             Controls.Add(btnLoad);
             Controls.Add(btnSave);
-            Controls.Add(testtext);
+            Controls.Add(pictureBox1);
             Name = "FormPrologue01";
             Text = "FormPrologue01";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private Label testtext;
         private Button btnSave;
         private Button btnLoad;
+        private PictureBox pictureBox1;
+        private RichTextBox text01;
+        private Button cont;
     }
 }

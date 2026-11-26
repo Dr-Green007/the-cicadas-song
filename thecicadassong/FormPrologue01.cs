@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
 
@@ -13,12 +10,25 @@ namespace thecicadassong
     {
         private GameState _state;
 
+        // тексты пролога по порядку
+        private readonly string[] _pages =
+        {
+            "Октябрь 1986 года.\nОстров Роккэндзима.\nВдали от материка, на скале над морем, стоит поместье рода Усиромия.\nВ этом году тайфун придёт раньше, чем семья успеет разъехаться.",
+            "Ты узнаешь об этом позже. А пока ты просто плывёшь домой, \nв место, которого не видел шесть лет."
+        };
+        // счётчик страниц
+        private int _pageIndex = 0;
+
         public FormPrologue01() : this(new GameState()) { }
 
         public FormPrologue01(GameState state)
         {
             InitializeComponent();
             _state = state ?? new GameState();
+            // события для текста
+            text01.ReadOnly = true;
+            text01.TabStop = false;
+            text01.Text = _pages[_pageIndex];
         }
 
         //СОХРАНИТЬ
@@ -112,6 +122,21 @@ namespace thecicadassong
 
             // переход
             Transition.Open(_state.CurrentSceneId, _state, this);
+        }
+
+        //ПРОДОЛЖИТЬ
+        private void cont_Click_1(object sender, EventArgs e)
+        {
+            _pageIndex++; // увеличиваем индекс
+
+            if (_pageIndex < _pages.Length) // если меньше, то идёт дальше подсчёт pX переменные, до того как завершится
+            {
+                text01.Text = _pages[_pageIndex]; // переход в следующий индекс
+            }
+            else
+            {
+                // здесь будет код переход на следующий форму (главу)
+            }
         }
     }
 }
