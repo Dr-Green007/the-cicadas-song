@@ -24,8 +24,7 @@ namespace thecicadassong
             DoubleBuffered = true;
             BackgroundImage = Properties.Resources.menu_bg;
             BackgroundImageLayout = ImageLayout.Stretch;
-            // а тут ничего нету (дополнение от лёхи: а тут что-то нахуй надо?)
-            // вот это надо
+            // а тут ничего нету (почти)
         }
 
         //Музыка включается, когда форма видна, и выключается, когда скрыта
