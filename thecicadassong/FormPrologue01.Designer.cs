@@ -2,14 +2,8 @@
 {
     partial class FormPrologue01
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -24,99 +18,108 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrologue01));
-            btnSave = new Button();
-            btnLoad = new Button();
             pictureBox1 = new PictureBox();
-            text01 = new RichTextBox();
-            cont = new Button();
+            dialog = new DialogBox();
+            btnSave = new HudButton();
+            btnLoad = new HudButton();
+            btnSettings = new HudButton();
+            btnMenu = new HudButton();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            pictureBox1.SuspendLayout();
             SuspendLayout();
-            // 
-            // btnSave
-            // 
-            btnSave.BackColor = Color.FromArgb(30, 30, 50);
-            btnSave.FlatStyle = FlatStyle.Flat;
-            btnSave.Font = new Font("SimSun-ExtG", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSave.ForeColor = SystemColors.ButtonFace;
-            btnSave.Location = new Point(12, 20);
-            btnSave.Name = "btnSave";
-            btnSave.Size = new Size(220, 50);
-            btnSave.TabIndex = 1;
-            btnSave.Text = "Сохранить игру";
-            btnSave.UseVisualStyleBackColor = false;
-            btnSave.Click += btnSave_Click;
-            // 
-            // btnLoad
-            // 
-            btnLoad.BackColor = Color.FromArgb(30, 30, 50);
-            btnLoad.FlatStyle = FlatStyle.Flat;
-            btnLoad.Font = new Font("SimSun-ExtG", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnLoad.ForeColor = SystemColors.ButtonFace;
-            btnLoad.Location = new Point(245, 20);
-            btnLoad.Name = "btnLoad";
-            btnLoad.Size = new Size(220, 50);
-            btnLoad.TabIndex = 2;
-            btnLoad.Text = "Загрузить игру";
-            btnLoad.UseVisualStyleBackColor = false;
-            btnLoad.Click += btnLoad_Click;
             // 
             // pictureBox1
             // 
             pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
-            pictureBox1.Location = new Point(1, 2);
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox1.Controls.Add(btnMenu);
+            pictureBox1.Controls.Add(btnSettings);
+            pictureBox1.Controls.Add(btnLoad);
+            pictureBox1.Controls.Add(btnSave);
+            pictureBox1.Controls.Add(dialog);
+            pictureBox1.Dock = DockStyle.Fill;
+            pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1004, 625);
+            pictureBox1.Size = new Size(1001, 563);
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
+            pictureBox1.Click += dialog_Click;
             // 
-            // text01
+            // dialog
             // 
-            text01.BackColor = SystemColors.GradientActiveCaption;
-            text01.BorderStyle = BorderStyle.None;
-            text01.Font = new Font("Georgia", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            text01.ForeColor = SystemColors.ControlText;
-            text01.Location = new Point(163, 345);
-            text01.Name = "text01";
-            text01.Size = new Size(619, 206);
-            text01.TabIndex = 4;
-            text01.Text = "Октябрь 1986 года. \nОстров Роккэндзима. \nВдали от материка, на скале над морем, стоит поместье рода Усиромия. \nВ этом году тайфун придёт раньше, чем семья успеет разъехаться.";
+            dialog.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dialog.Font = new Font("Georgia", 17F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            dialog.Location = new Point(0, 355);
+            dialog.Name = "dialog";
+            dialog.Size = new Size(1001, 190);
+            dialog.TabIndex = 0;
+            dialog.Click += dialog_Click;
             // 
-            // cont
+            // btnSave
             // 
-            cont.BackColor = Color.FromArgb(30, 30, 50);
-            cont.FlatStyle = FlatStyle.Flat;
-            cont.Font = new Font("SimSun-ExtG", 14.25F);
-            cont.ForeColor = SystemColors.ButtonFace;
-            cont.Location = new Point(812, 505);
-            cont.Name = "cont";
-            cont.Size = new Size(177, 55);
-            cont.TabIndex = 5;
-            cont.Text = "Продолжить";
-            cont.UseVisualStyleBackColor = false;
-            cont.Click += cont_Click_1;
+            btnSave.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnSave.Font = new Font("Georgia", 11F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            btnSave.Location = new Point(489, 12);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(120, 36);
+            btnSave.TabIndex = 1;
+            btnSave.Text = "Сохранить";
+            btnSave.Click += btnSave_Click;
+            // 
+            // btnLoad
+            // 
+            btnLoad.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnLoad.Font = new Font("Georgia", 11F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            btnLoad.Location = new Point(617, 12);
+            btnLoad.Name = "btnLoad";
+            btnLoad.Size = new Size(120, 36);
+            btnLoad.TabIndex = 2;
+            btnLoad.Text = "Загрузить";
+            btnLoad.Click += btnLoad_Click;
+            // 
+            // btnSettings
+            // 
+            btnSettings.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnSettings.Font = new Font("Georgia", 11F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            btnSettings.Location = new Point(745, 12);
+            btnSettings.Name = "btnSettings";
+            btnSettings.Size = new Size(120, 36);
+            btnSettings.TabIndex = 3;
+            btnSettings.Text = "Настройки";
+            btnSettings.Click += btnSettings_Click;
+            // 
+            // btnMenu
+            // 
+            btnMenu.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnMenu.Font = new Font("Georgia", 11F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            btnMenu.Location = new Point(873, 12);
+            btnMenu.Name = "btnMenu";
+            btnMenu.Size = new Size(120, 36);
+            btnMenu.TabIndex = 4;
+            btnMenu.Text = "В меню";
+            btnMenu.Click += btnMenu_Click;
             // 
             // FormPrologue01
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ActiveCaptionText;
+            BackColor = Color.Black;
             ClientSize = new Size(1001, 563);
-            Controls.Add(cont);
-            Controls.Add(text01);
-            Controls.Add(btnLoad);
-            Controls.Add(btnSave);
             Controls.Add(pictureBox1);
             Name = "FormPrologue01";
-            Text = "FormPrologue01";
+            Text = "Песнь цикад";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            pictureBox1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
-        private Button btnSave;
-        private Button btnLoad;
+
         private PictureBox pictureBox1;
-        private RichTextBox text01;
-        private Button cont;
+        private DialogBox dialog;
+        private HudButton btnSave;
+        private HudButton btnLoad;
+        private HudButton btnSettings;
+        private HudButton btnMenu;
     }
 }

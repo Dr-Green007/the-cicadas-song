@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
 
@@ -10,13 +11,12 @@ namespace thecicadassong
     {
         private GameState _state;
 
-        // тексты пролога по порядку
-        private readonly string[] _pages =
+        //реплики по порядку: (кто говорит, текст). Пустое имя = рассказчик
+        private readonly (string Speaker, string Text)[] _pages =
         {
-            "Октябрь 1986 года.\nОстров Роккэндзима.\nВдали от материка, на скале над морем, стоит поместье рода Усиромия.\nВ этом году тайфун придёт раньше, чем семья успеет разъехаться.",
-            "Ты узнаешь об этом позже. А пока ты просто плывёшь домой, \nв место, которого не видел шесть лет."
+            ("", "Октябрь 1986 года.\nОстров Роккэндзима.\nВдали от материка, на скале над морем, стоит поместье рода Усиромия.\nВ этом году тайфун придёт раньше, чем семья успеет разъехаться."),
+            ("", "Ты узнаешь об этом позже. А пока ты просто плывёшь домой, в место, которого не видел шесть лет.")
         };
-        // счётчик страниц
         private int _pageIndex = 0;
 
         public FormPrologue01() : this(new GameState()) { }
@@ -25,10 +25,70 @@ namespace thecicadassong
         {
             InitializeComponent();
             _state = state ?? new GameState();
-            // события для текста
-            text01.ReadOnly = true;
-            text01.TabStop = false;
-            text01.Text = _pages[_pageIndex];
+
+            DoubleBuffered = true;
+            KeyPreview = true;
+            KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.Space || e.KeyCode == Keys.Enter)
+                {
+                    Advance();
+                    e.Handled = true;
+                    e.SuppressKeyPress = true;
+                }
+            };
+
+            ShowPage();
+        }
+
+        private void ShowPage()
+        {
+            var p = _pages[_pageIndex];
+            dialog.SetMessage(p.Speaker, p.Text);
+        }
+
+        // ДАЛЬШЕ (клик, пробел, Enter)
+        private void Advance()
+        {
+            if (dialog.IsTyping)
+            {
+                dialog.Complete();   // первый клик допечатывает текст
+                return;
+            }
+
+            _pageIndex++;
+            if (_pageIndex < _pages.Length)
+            {
+                ShowPage();
+            }
+            else
+            {
+                _pageIndex = _pages.Length - 1;
+                // здесь будет код перехода на следующую форму (главу)
+            }
+        }
+
+        private void dialog_Click(object? sender, EventArgs e) => Advance();
+
+        //НАСТРОЙКИ
+        private void btnSettings_Click(object? sender, EventArgs e)
+        {
+            using var f = new SettingsForm();
+            f.ShowDialog(this);
+        }
+
+        //В МЕНЮ
+        private void btnMenu_Click(object? sender, EventArgs e)
+        {
+            var ok = MessageBox.Show(
+                "Выйти в главное меню? Несохранённый прогресс будет потерян.",
+                "Песнь цикад", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (ok != DialogResult.Yes) return;
+
+            var menu = Application.OpenForms.OfType<Form1>().FirstOrDefault();
+            if (menu == null || menu.IsDisposed) menu = new Form1();
+            menu.Show();   // Form1 сама включит музыку при показе
+            Close();
         }
 
         //СОХРАНИТЬ
@@ -122,21 +182,6 @@ namespace thecicadassong
 
             // переход
             Transition.Open(_state.CurrentSceneId, _state, this);
-        }
-
-        //ПРОДОЛЖИТЬ
-        private void cont_Click_1(object sender, EventArgs e)
-        {
-            _pageIndex++; // увеличиваем индекс
-
-            if (_pageIndex < _pages.Length) // если меньше, то идёт дальше подсчёт pX переменные, до того как завершится
-            {
-                text01.Text = _pages[_pageIndex]; // переход в следующий индекс
-            }
-            else
-            {
-                // здесь будет код переход на следующий форму (главу)
-            }
         }
     }
 }
