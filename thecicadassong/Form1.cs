@@ -18,6 +18,15 @@ namespace thecicadassong
             using var f = new EasterEggForm();
             f.ShowDialog(this);
         }
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                var cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;
+                return cp;
+            }
+        }
         public Form1()
         {
             InitializeComponent();

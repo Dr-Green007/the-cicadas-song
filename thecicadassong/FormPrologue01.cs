@@ -9,6 +9,15 @@ namespace thecicadassong
 {
     public partial class FormPrologue01 : Form
     {
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                var cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;
+                return cp;
+            }
+        }
         private GameState _state;
 
         //реплики по порядку: (кто говорит, текст). Пустое имя = рассказчик
